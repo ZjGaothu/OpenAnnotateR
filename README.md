@@ -8,9 +8,7 @@ OpenAnnotate facilitates the chromatin accessibility annotation for massive geno
 
 For more information, please refer to the web: http://health.tsinghua.edu.cn/openannotate/
 
-### Install OpenAnnotate via Pypi
-Anaconda users can first create a new Python environment and activate it via(this is unnecessary if your Python environment is managed in other ways)
-
+### Install OpenAnnotate via devtools
 
 OpenAnnotate is available on github here and can be installed via `devtools`, make sure you have installed `deltools` fist
 ```R
