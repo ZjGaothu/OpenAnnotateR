@@ -1,0 +1,27 @@
+#' @title getCelltypeList
+#' @import stringr
+#' @import httr
+#' @import RCurl
+#' @description Get the corresponding cell type list
+#' @param protocol : 1-DNase-seq(ENCODE),2-ATAC-seq(ENCODE),3-ATAC-seq(ATACdb)
+#' @param species : genome version of human of mouse, 11-hg19,12-hg38,21-mm9,22-mm10
+#' @export getCelltypeList
+#' @examples getCelltypeList(1,11)
+
+getCelltypeList <- function(protocol,species)
+{
+  protocolDict <- c('dseq','aseq','atbd')
+  speciesDict <- c('11' ='hg19','12'='hg38','21'='mm09','22'='mm10')
+  if(species == 12){species = 11}
+  if(species == 22){species = 21}
+  if(species == 21 & protocol == 3){
+    print('The corresponding cell type was not found. Please reselect the parameters.')
+    return(0)}
+  url = sprintf('http://health.tsinghua.edu.cn/openness/anno/info/stat/celltp_%s_%s.txt',speciesDict[as.character(species)],protocolDict[protocol])
+  result = getURL(url)
+  result = str_split(result,'\n',simplify = TRUE)
+  print('1 - All biosample types')
+  for(i in 2: length(result) - 1){
+    print(paste(c(as.character(i + 1) , " - " , substring(result[i],9,nchar(result[i]))),collapse = ''))
+  }
+}

@@ -1,0 +1,95 @@
+#' @title runAnnotate
+#' @description Upload .bed or .bed.gz file to the server
+#' @import stringr
+#' @import httr
+#' @import RCurl
+#' @param file_path : The path of the '.bed' or '.bed.gz' file to be uploaded.
+#' @param species : genome version of human of mouse, 11-hg19,12-hg38,21-mm9,22-mm10
+#' @param protocol : 1-DNase-seq(ENCODE),2-ATAC-seq(ENCODE),3-ATAC-seq(ATACdb)
+#' @param cell_type : refer to the function getCelltypeList()
+#' @param perbase : 0 : Region based,1 : Per-base based.
+#' @return taskID
+#' @export runAnnotate
+runAnnotate <- function(file_path, species,protocol,cell_type,perbase)
+{
+  protocolDict <- c('dseq','aseq','atbd')
+  speciesDict <- c('11' ='hg19','12'='hg38','21'='mm09','22'='mm10')
+  if(species == 21 & protocol == 3){
+    print('The corresponding cell type was not found. Please reselect the parameters.')
+    return(0)}
+  if(species == 22 & protocol == 3){
+    print('The corresponding cell type was not found. Please reselect the parameters.')
+    return(0)}
+  if(!protocol %in% c(1,2,3)){print('Wrong parameter! Please reset protocol')
+    return(0)}
+  if(!species %in% c(11,12,21,22)){print('Wrong parameter! Please reset protocol')
+    return(0)}
+  ask_species <- 0
+  if(species == 12){ask_species <- 11}
+  if(species == 22){ask_species <- 21}
+  url = sprintf('http://health.tsinghua.edu.cn/openness/anno/info/stat/celltp_%s_%s.txt',speciesDict[as.character(ask_species)],protocolDict[protocol])
+  result = getURL(url)
+  result = str_split(result,'\n',simplify = TRUE)
+  if(!cell_type %in% seq(1:length(result)))
+  {
+    print('Wrong parameter! Please reset cell type')
+    return(0)
+  }
+  if(!perbase %in% c(0,1))
+  {
+    print('Wrong parameter! Please reset perbase')
+    return(0)
+  }
+
+  # check bed bed.gz file
+  temp_path = str_split(file_path,'/',simplify = TRUE)
+  if(length(temp_path) > 1)
+  {
+    temp_path <- temp_path[-1]
+  }
+  if(str_split(temp_path,'[.]',simplify = TRUE)[2] != 'bed')
+  {
+    print('ERROR! Please upload \'.bed\' or \'.bed.gz\' file.')
+    return(0)
+  }
+  tmp_bed <- read.table(file_path,header = FALSE, sep = "\t")
+  tmp_bed <- as.matrix(tmp_bed)
+  dim <- dim(tmp_bed)
+  if(dim[2] != 6)
+  {
+    print('Wrong file format! Please check the format of your bed file.')
+    return(0)
+  }
+  for(i in 1:dim[1])
+  {
+    if(substr(tmp_bed[i,1],1,3) != 'chr')
+    {
+      print('Wrong file format! Please check the format of your bed file.')
+      return(0)
+    }
+    temp_digits <- gregexpr('[0-9 ]',tmp_bed[i,2])
+    temp_digits <- temp_digits[[1]]
+    if(length(temp_digits) != as.numeric(nchar(tmp_bed[i,2])))
+    {
+      print('Wrong file format! Please check the format of your bed file.')
+      return(0)
+    }
+    if(length(temp_digits) != (nchar(tmp_bed[i,3])))
+    {
+      print('Wrong file format! Please check the format of your bed file.')
+      return(0)
+    }
+  }
+
+  taskID <- generateID()
+  url_post <- 'http://health.tsinghua.edu.cn/openness/anno/phpa/stepu_api.php'
+  upload <- POST(url_post,
+                 body = list(species = species,
+                             protocol = protocol,
+                             celltype=cell_type,
+                             perbasepair=perbase,
+                             taskname = taskID,file = upload_file(file_path,type = 'file')),
+                 encode = 'multipart')
+  print(paste(c("your task id is : ",as.character(taskID)),collapse = ''))
+  return(taskID)
+}
