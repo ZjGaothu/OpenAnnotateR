@@ -18,8 +18,8 @@ getCelltypeList <- function(protocol,species)
     print('The corresponding cell type was not found. Please reselect the parameters.')
     return(0)}
   url = sprintf('http://health.tsinghua.edu.cn/openness/anno/info/stat/celltp_%s_%s.txt',speciesDict[as.character(species)],protocolDict[protocol])
-  result = getURL(url)
-  result = str_split(result,'\n',simplify = TRUE)
+  result <- getURL(url)
+  result <- str_split(result,'\n',simplify = TRUE)
   print('1 - All biosample types')
   for(i in 2: length(result) - 1){
     print(paste(c(as.character(i + 1) , " - " , substring(result[i],9,nchar(result[i]))),collapse = ''))
