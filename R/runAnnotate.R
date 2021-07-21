@@ -91,5 +91,6 @@ runAnnotate <- function(file_path, species,protocol,cell_type,perbase)
                              taskname = taskID,file = upload_file(file_path,type = 'file')),
                  encode = 'multipart')
   print(paste(c("your task id is : ",as.character(taskID)),collapse = ''))
+  print(sprintf('You can get the progress of your task through getProgress(task_id=%s)',task_id))
   return(taskID)
 }
