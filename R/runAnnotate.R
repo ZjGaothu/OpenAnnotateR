@@ -22,7 +22,7 @@ runAnnotate <- function(file_path, species,protocol,cell_type,perbase)
     return(0)}
   if(!protocol %in% c(1,2,3)){print('Wrong parameter! Please reset protocol')
     return(0)}
-  if(!species %in% c(11,12,21,22)){print('Wrong parameter! Please reset protocol')
+  if(!species %in% c(11,12,21,22)){print('Wrong parameter! Please reset species')
     return(0)}
   ask_species <- 0
   if(species == 12){ask_species <- 11}
@@ -45,7 +45,7 @@ runAnnotate <- function(file_path, species,protocol,cell_type,perbase)
   temp_path = str_split(file_path,'/',simplify = TRUE)
   if(length(temp_path) > 1)
   {
-    temp_path <- temp_path[-1]
+    temp_path <- temp_path[length(temp_path)]
   }
   if(str_split(temp_path,'[.]',simplify = TRUE)[2] != 'bed')
   {
