@@ -21,7 +21,7 @@ getProgress <- function(task_id)
   else
   {
     print('Your task has been completed!')
-    print('You can get the result file type first through getResultType()')
+    print('You can get the result file type first through getResultList()')
     print(sprintf('You can download result file through getAnnoResult(result_type, save_path, %s)',random_id))
   }
 }
