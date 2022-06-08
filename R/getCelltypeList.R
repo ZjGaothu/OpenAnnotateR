@@ -6,18 +6,19 @@
 #' @param protocol : 1-DNase-seq(ENCODE),2-ATAC-seq(ENCODE),3-ATAC-seq(ATACdb)
 #' @param species : genome version of human of mouse, 11-hg19,12-hg38,21-mm9,22-mm10
 #' @export getCelltypeList
-#' @examples getCelltypeList(1,11)
+#' @examples getCelltypeList(1,1)
 
 getCelltypeList <- function(protocol,species)
 {
+
   protocolDict <- c('dseq','aseq','atbd')
-  speciesDict <- c('11' ='hg19','12'='hg38','21'='mm09','22'='mm10')
-  if(species == 12){species = 11}
-  if(species == 22){species = 21}
-  if(species == 21 & protocol == 3){
+  speciesDict <- c('1' ='hg19','2'='hg38','3'='mm09','4'='mm10')
+  if(species == 2){species = 1}
+  if(species == 4){species = 3}
+  if(species == 3 & protocol == 3){
     print('The corresponding cell type was not found. Please reselect the parameters.')
     return(0)}
-  url = sprintf('http://health.tsinghua.edu.cn/openness/anno/info/stat/celltp_%s_%s.txt',speciesDict[as.character(species)],protocolDict[protocol])
+  url = sprintf('http://166.111.5.185:80/openness/anno/info/stat/celltp_%s_%s.txt',speciesDict[as.character(species)],protocolDict[protocol])
   result <- getURL(url)
   result <- str_split(result,'\n',simplify = TRUE)
   print('1 - All biosample types')

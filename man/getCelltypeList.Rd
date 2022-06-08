@@ -15,5 +15,5 @@ getCelltypeList(protocol, species)
 Get the corresponding cell type list
 }
 \examples{
-getCelltypeList(1,11)
+getCelltypeList(1,1)
 }

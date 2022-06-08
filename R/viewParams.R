@@ -13,7 +13,7 @@ viewParams <- function(task_id)
   protocolDict_w = c('DNase-seq(ENCODE)','ATAC-seq(ENCODE)','ATAC-seq(ATACdb)')
   speciesDict_w = c('11' = 'GRCh37/hg19','12' = 'GRCh38/hg38','21' = 'GRCm37/mm9','22' = 'GRCm38/mm10')
   print('Your task\'s parameters:')
-  url <- sprintf('http://health.tsinghua.edu.cn/openness/anno/task/task/%s/openanno.ret',task_id)
+  url <- sprintf('http://166.111.5.185:80/openness/anno/task/task/%s/openanno.ret',task_id)
   result <- getURL(url)
   task_info <- str_split(result,'\t',simplify = TRUE)
   info_len <- length(task_info)
@@ -30,13 +30,13 @@ viewParams <- function(task_id)
   if(species == 21 & protocol == 3){
     print('The corresponding cell type was not found. Please reselect the parameters.')
     return(0)}
-  url = sprintf('http://health.tsinghua.edu.cn/openness/anno/info/stat/celltp_%s_%s.txt',speciesDict[as.integer(species)],protocolDict[as.integer(protocol)])
+  url = sprintf('http://166.111.5.185:80/openness/anno/info/stat/celltp_%s_%s.txt',speciesDict[as.integer(species)],protocolDict[as.integer(protocol)])
   result = getURL(url)
   result = str_split(result,'\n')
   perbaseDict = c('region based','perbase based')
-  if(as.integer(cell_type) ==  1){
-    print('Cell type: All biosample types')}
-  else{
-    print(paste(c('Cell type: ' , result[as.integer(cell_type) - 2][8:length(result[as.integer(cell_type) - 2])]),collapse = ''))}
+  # if(as.integer(cell_type) ==  1){
+  #   print('Cell type: All biosample types')}
+  # else{
+  #   print(paste(c('Cell type: ' , result[as.integer(cell_type) - 2][8:length(result[as.integer(cell_type) - 2])]),collapse = ''))}
   print(paste(c('Annotate mode: ', perbaseDict[as.integer(perbase) + 1] ),collapse = ''))
 }

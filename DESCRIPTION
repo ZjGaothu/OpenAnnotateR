@@ -9,5 +9,5 @@ License: MIT
 Encoding: UTF-8
 LazyData: FALSE
 Imports:
-  httr,stringr,RCurl
+  httr,stringr,RCurl,Seurat
 RoxygenNote: 7.1.1

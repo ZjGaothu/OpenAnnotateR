@@ -4,7 +4,7 @@
 \alias{runAnnotate}
 \title{runAnnotate}
 \usage{
-runAnnotate(file_path, species, protocol, cell_type, perbase)
+runAnnotate(file_path, species, protocol, perbase)
 }
 \arguments{
 \item{file_path}{: The path of the '.bed' or '.bed.gz' file to be uploaded.}
@@ -12,8 +12,6 @@ runAnnotate(file_path, species, protocol, cell_type, perbase)
 \item{species}{: genome version of human of mouse, 11-hg19,12-hg38,21-mm9,22-mm10}
 
 \item{protocol}{: 1-DNase-seq(ENCODE),2-ATAC-seq(ENCODE),3-ATAC-seq(ATACdb)}
-
-\item{cell_type}{: refer to the function getCelltypeList()}
 
 \item{perbase}{: 0 : Region based,1 : Per-base based.}
 }

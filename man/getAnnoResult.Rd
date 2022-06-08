@@ -4,12 +4,12 @@
 \alias{getAnnoResult}
 \title{getAnnoResult}
 \usage{
-getAnnoResult(result_type, save_path, task_id)
+getAnnoResult(result_type, cell_types, task_id)
 }
 \arguments{
 \item{result_type}{:  The file type of the result, 1 - head, 2 - readopen, 3 - peakopen, 4 - spotopen, 5 - foreread.}
 
-\item{save_path}{: Path to save download file.}
+\item{cell_types}{: Path to save download file.}
 
 \item{task_id}{: The 16-bit identity of the submitted task.}
 }
@@ -17,5 +17,5 @@ getAnnoResult(result_type, save_path, task_id)
 Download the annotation result
 }
 \examples{
-getAnnoResult(1,'.',2020121013091517)
+getAnnoResult(1,2,2020121013091517)
 }

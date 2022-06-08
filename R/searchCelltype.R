@@ -17,7 +17,7 @@ searchCelltype <- function(protocol,species,keyword)
   if(species == 21 & protocol == 3){
     print('The corresponding cell type was not found. Please reselect the parameters.')
     return(0)}
-  url = sprintf('http://health.tsinghua.edu.cn/openness/anno/info/stat/celltp_%s_%s.txt',speciesDict[as.character(species)],protocolDict[protocol])
+  url = sprintf('http://166.111.5.185:80/openness/anno/info/stat/celltp_%s_%s.txt',speciesDict[as.character(species)],protocolDict[protocol])
   result = getURL(url)
   result = str_split(result,'\n',simplify = TRUE)
   if(grepl(keyword,'All biosample types') == TRUE)
