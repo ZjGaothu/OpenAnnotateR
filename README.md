@@ -22,11 +22,15 @@ devtools::install_github("ZjGaothu/OpenAnnotateR")
 | help() | Get a list of the various functions and arguments that the package contains. |
 | getParams() | get params list |
 | getCelltypeList(protocol, species) | get cell type list |
+| getTissueList(protocol, species) | get tissue for annotation |
+| getSystemList(protocol, species) | get systems for annotation|
 | searchCelltype(protocol, species, keyword) | search for cell types that contain keyword |
+| searchTissue(protocol, species, keyword) | search for tissues that contain keyword and corresponding cell types|
+| searchSystem(protocol, species, keyword) | search for systems that contain keyword and corresponding cell types|
 | runAnnotate(file_path, species, protocol, cell_type, perbase) | upload file to server |
 | getProgress(task_id)| You can view the annotation progress |
-| getAnnoResult(result_type, save_path, task_id) | Download the annotation result |
+| getAnnoResult(result_type, cell_type, task_id) | Download the annotation result |
 | getInputFile(save_path, task_id) | get your input file from server |
 | viewParams(task_id) | view parameters|
-| exampleTaskID() | get example task id|
-| exampleInputFile(save_path) | get example input file to the save_path|
+| getExampleTaskID() | get example task id|
+| getExampleInputFile(save_path) | get example input file to the save_path|
