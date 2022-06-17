@@ -11,13 +11,13 @@
 searchCelltype <- function(protocol,species,keyword)
 {
   protocolDict <- c('dseq','aseq','atbd')
-  speciesDict <- c('11' ='hg19','12'='hg38','21'='mm09','22'='mm10')
-  if(species == 12){species = 11}
-  if(species == 22){species = 21}
-  if(species == 21 & protocol == 3){
+  speciesDict <- c('1' ='hg19','2'='hg38','3'='mm09','4'='mm10')
+  if(species == 2){species = 1}
+  if(species == 4){species = 3}
+  if(species == 3 & protocol == 3){
     print('The corresponding cell type was not found. Please reselect the parameters.')
     return(0)}
-  url = sprintf('http://166.111.5.185:80/openness/anno/info/stat/celltp_%s_%s.txt',speciesDict[as.character(species)],protocolDict[protocol])
+  url = sprintf('http://159.226.47.242:65533/openness/anno/info/stat/celltp_%s_%s.txt',speciesDict[as.character(species)],protocolDict[protocol])
   result = getURL(url)
   result = str_split(result,'\n',simplify = TRUE)
   if(grepl(keyword,'All biosample types') == TRUE)

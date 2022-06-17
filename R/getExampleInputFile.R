@@ -8,7 +8,7 @@
 #' @examples getExampleInputFile('.')
 getExampleInputFile <- function(save_path)
 {
-  url = 'http://166.111.5.185:80/openness/anno/phpa/help/EXAMPLE.bed.gz'
+  url = 'http://159.226.47.242:65533/openness/anno/phpa/help/EXAMPLE.bed.gz'
   progress <- getBinaryURL(url)
   note <- file(sprintf("%s/EXAMPLE.bed.gz",save_path), open = "wb")
   print(sprintf('get the result to %s/EXAMPLE.bed.gz',save_path))
