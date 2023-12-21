@@ -7,7 +7,6 @@
 Openness2Seurat <- function(file_path,header_path)
 {
   open.mat <- read.table(file_path,header = FALSE)
-  header.mat <- read.table(header_path,header = FALSE)
   lines <- readLines(header_path)
   first_column <- sapply(strsplit(lines, " "), "[", 1)
   open.mat <- open.mat[,5:dim(open.mat)[2]]
