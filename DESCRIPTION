@@ -1,0 +1,13 @@
+Package: OpenAnnotateR
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.3.2
+Author: Gao zijing
+Maintainer: Gao zijing <3193346402@qq.com>
+Description: A R package for efficiently annotating the chromatin accessibility of genomic regions.
+License: MIT
+Encoding: UTF-8
+LazyData: FALSE
+Imports:
+  httr,stringr,RCurl,Seurat
+RoxygenNote: 7.1.1
