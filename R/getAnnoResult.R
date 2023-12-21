@@ -119,6 +119,6 @@ getAnnoResult <- function(result_type,cell_types,task_id)
     datas <- datas[idxs,]
     file.remove(sprintf("%s/%s_%s.txt.gz",save_path,task_id,result_type))
     write.table(datas,file=sprintf("%s/%s_%s.txt",save_path,task_id,result_type),quote = F,col.names = F,row.names = F)
-    print(sprintf('get the result to %s/%s_%s.txt.gz',save_path,task_id,result_type))
+    print(sprintf('get the result to %s/%s_%s.txt',save_path,task_id,result_type))
   }
 }
