@@ -10,7 +10,7 @@ For more information, please refer to the web: http://health.tsinghua.edu.cn/ope
 
 ### Install OpenAnnotateR via devtools
 
-OpenAnnotateR is available on github here and can be installed via `devtools`, make sure you have installed `deltools` fist
+OpenAnnotateR is available on github here and can be installed via `devtools`, make sure you have installed `devtools` fist
 ```R
 devtools::install_github("ZjGaothu/OpenAnnotateR")
 ```
@@ -35,7 +35,7 @@ devtools::install_github("ZjGaothu/OpenAnnotateR")
 | viewParams(task_id) | view parameters|
 | getExampleTaskID() | get example task id|
 | getExampleInputFile(save_path) | get example input file to the save_path|
-| Openness2Seurat(file_path) | convert the openness score to a seurat object|
+| Openness2Seurat(file_path,header_path) | convert the openness score to a seurat object|
 
 ### A simple example
 
@@ -55,7 +55,7 @@ getResultList()
 
 getAnnoResult(result_type=1, cell_types=c(2,8,9), task_id)
 
-ref_seurat <- Openness2Seurat('./results/2023122110412810_readopen.txt')
+ref_seurat <- Openness2Seurat('./results/2023122110412810_readopen.txt','./results/2023122110412810_head.txt')
 
 ```
 ### Tutorial
