@@ -105,7 +105,7 @@ oaa.help()
 In order to know the format of the input file, we have an example input file stored on the server, which can be downloaded to the local path by:
 
 ```r
-exampleInputFile('.')
+getExampleInputFile('.')
 # get the result to ./EXAMPLE.bed.gz
 ```
 **Run Annotate**
