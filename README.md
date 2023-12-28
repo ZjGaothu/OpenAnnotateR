@@ -59,6 +59,8 @@ task_id <- runAnnotate('./EXAMPLE.bed.gz', species=1, protocol=1, perbase=2)
 
 getResultList()
 
+getAnnoResult(result_type=2, cell_types=c(2,8,9), task_id)
+
 getAnnoResult(result_type=1, cell_types=c(2,8,9), task_id)
 
 ref_seurat <- Openness2Seurat(paste('./results/',task_id,'_readopen.txt',sep=''),paste('./results/',task_id,'_head.txt',sep=''))
@@ -98,7 +100,7 @@ oaa.help()
  "viewParams(task_id) : view parameters"
  "exampleTaskID() : get example task id"
  "exampleInputFile(save_path) : get example input file to the save_path"
- "Openness2Seurat(file_path) : convert the openness score to a seurat object"
+ "Openness2Seurat(file_path, header_path) : convert the openness score to a seurat object"
 '''
 ```
 
@@ -179,6 +181,7 @@ Download the readopen of the annotation result.
 
 ```r
 getAnnoResult(result_type = 2,cell_types = c(2,3,4),task_id = 2023122816325392)
+getAnnoResult(result_type = 1,cell_types = c(2,3,4),task_id = 2023122816325392)
 # get the result to ./results/2023122816325392_readopen.txt
 ```
 
@@ -186,19 +189,19 @@ getAnnoResult(result_type = 2,cell_types = c(2,3,4),task_id = 2023122816325392)
 **View Task Information**
 We can also view the previous tasks’ information by
 ```r
-viewParams(task_id = 2021080911093988)
+viewParams(task_id = 2023122816325392)
 # Your task's parameters:
 # Protocol: DNase-seq(ENCODE)
 # Species: GRCh37/hg19
 # Cell type: All biosample types
-# Annotate mode: region based
-getInputFile('.',2021080911093988)
-# get the result to ./2021080911093988.bed
+# Annotate mode: perbase based
+getInputFile('.',2023122816325392)
+# get the result to ./2023122816325392.bed
 ```
 
 **Convert to Seurat object**
 To better integrate with single-cell analysis, users can directly convert the results into a Seurat object.
 
 ```r
-ref_seurat <- Openness2Seurat('./results/2023122110412810_readopen.txt')
+ref_seurat <- Openness2Seurat('./results/2023122816325392_readopen.txt','./results/2023122816325392_head.txt')
 ```
