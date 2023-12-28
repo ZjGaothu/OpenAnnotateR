@@ -53,13 +53,15 @@ getParams()
 
 getCelltypeList(protocol=1, species=1)
 
-task_id <- runAnnotate(file_path, species, protocol, perbase)
+getExampleInputFile('.')
+
+task_id <- runAnnotate('./EXAMPLE.bed.gz', species=1, protocol=1, perbase=2)
 
 getResultList()
 
 getAnnoResult(result_type=1, cell_types=c(2,8,9), task_id)
 
-ref_seurat <- Openness2Seurat('./results/2023122110412810_readopen.txt','./results/2023122110412810_head.txt')
+ref_seurat <- Openness2Seurat(paste('./results/',task_id,'_readopen.txt',sep=''),paste('./results/',task_id,'_head.txt',sep=''))
 
 ```
 ### Tutorial
