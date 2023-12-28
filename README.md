@@ -157,7 +157,7 @@ viewParams(task_id = 2021080911093988)
 # Species: GRCh37/hg19
 # Cell type: All biosample types
 # Annotate mode: region based
-> getInputFile('.',2021080911093988)
+getInputFile('.',2021080911093988)
 # get the result to ./2021080911093988.bed
 ```
 
