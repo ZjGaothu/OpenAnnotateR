@@ -128,13 +128,24 @@ task_id <- runAnnotate('EXAMPLE.bed.gz',species = 1,protocol = 1,perbase = 1)
 # 2 - Per-base based
 ```
 
+- `species` : 
+  - 1 : GRCh37/hg19 
+  - 2 : GRCh38/hg38 
+  - 3 : GRCm37/mm9 
+  - 4 : GRCm38/mm10
+- `protocol`: 
+  - 1 : DNase-seq(ENCODE)
+  - 2 : ATAC-seq(ENCODE) 
+  - 3 : ATAC-seq(ATACdb)
+- `perbase`: 1 : Region based,2 : Per-base based.
+
 **Download the Result**
 Before downloading the results, you need to query the progress of the annotation task and download the results file when the task is complete.
 ```r
-getProgress(task_id=2021080911093988)
+getProgress(task_id=2023122816325392)
 # Your task has been completed!
 # You can get the result file type first through getResultList()
-# You can download result file through getAnnoResult(result_type, save_path, 2021080911093988)
+# You can download result file through getAnnoResult(result_type, cell_type, 2023122816325392)
 ```
 Following the notes, query the types of result by
 ```r
@@ -145,7 +156,31 @@ getResultList()
 # 4 - spotopen
 # 5 - foreread
 ```
+
+Users can search for specific systems, tissues, and cell types using keywords.
+```r
+searchSystem(protocol=1,species=1,keyword='U')
+searchTissue(protocol=1,species=1,keyword='U')
+searchCelltyp(protocol=1,species=1,keyword='K562')
+```
+
+- `species` : 
+  - 1 : GRCh37/hg19 
+  - 2 : GRCh38/hg38 
+  - 3 : GRCm37/mm9 
+  - 4 : GRCm38/mm10
+- `protocol`: 
+  - 1 : DNase-seq(ENCODE)
+  - 2 : ATAC-seq(ENCODE) 
+  - 3 : ATAC-seq(ATACdb)
+- `keyword`: Key word for search. Such as `K562` and `Blood`.
+
 Download the readopen of the annotation result.
+
+```r
+getAnnoResult(result_type = 2,cell_types = c(2,3,4),task_id = 2023122816325392)
+# get the result to ./results/2023122816325392_readopen.txt
+```
 
 
 **View Task Information**
