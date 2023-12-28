@@ -163,7 +163,7 @@ Users can search for specific systems, tissues, and cell types using keywords.
 ```r
 searchSystem(protocol=1,species=1,keyword='U')
 searchTissue(protocol=1,species=1,keyword='U')
-searchCelltyp(protocol=1,species=1,keyword='K562')
+searchCelltype(protocol=1,species=1,keyword='K562')
 ```
 
 - `species` : 
