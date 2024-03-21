@@ -44,7 +44,7 @@ devtools::install_github("ZjGaothu/OpenAnnotateR")
 ### A simple example
 
 
-Upload a region file to the web server and download the head and the readopen of the annotation result to the local path, then initialize an seurat object for downstream analysis (Annotation in Per-base mode).
+Upload a region file to the web server and download the head and the readopen of the annotation result to the local path, then initialize an seurat object for downstream analysis **||(Annotation in Per-base mode)||**.
 
 ```r
 library(OpenAnnotateR)
@@ -55,6 +55,7 @@ getCelltypeList(protocol=1, species=1)
 
 getExampleInputFile('.')
 
+# GRCh37/hg19 Dnase-seq All-biosamples Per-base annotation mode
 task_id <- runAnnotate('./EXAMPLE.bed.gz', species=1, protocol=1, perbase=2)
 
 getResultList()
