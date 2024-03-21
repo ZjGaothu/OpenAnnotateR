@@ -44,7 +44,7 @@ devtools::install_github("ZjGaothu/OpenAnnotateR")
 ### A simple example
 
 
-Upload a region file to the web server and download the head and the readopen of the annotation result to the local path, then initialize an seurat object for downstream analysis **||(Annotation in Per-base mode)||**.
+Upload a region file to the web server and download the head and the readopen of the annotation result to the local path, then initialize an seurat object for downstream analysis **<span style="color:red;">(Annotation in Per-base mode)</span>**.
 
 ```r
 library(OpenAnnotateR)
