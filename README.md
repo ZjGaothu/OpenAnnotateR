@@ -12,6 +12,8 @@ OpenAnnotateR facilitates the chromatin accessibility annotation for massive gen
 
 For more information, please refer to the web: http://health.tsinghua.edu.cn/openannotate/
 
+We have also developed a Python package called [OpenAnnotatePy](https://github.com/ZjGaothu/OpenAnnotatePy), which can be accessed through this [link](https://github.com/ZjGaothu/OpenAnnotatePy).
+
 ### Install OpenAnnotateR via devtools
 
 OpenAnnotateR is available on github here and can be installed via `devtools`, make sure you have installed `devtools` fist
